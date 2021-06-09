@@ -1,5 +1,6 @@
 package com.huajiwang.flutter_huaji_push
 
+import android.util.Log
 import androidx.annotation.NonNull
 import com.tencent.android.tpush.XGIOperateCallback
 import com.tencent.android.tpush.XGPushConfig
@@ -16,7 +17,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterHuajiPushPlugin */
 class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
-  private var TAG = "| XgpushpPlugin | Flutter | Android | "
+  private var TAG = "| FlutterHuajiPushPlugin | Flutter | Android | "
 
   constructor() {
     instance = this
@@ -53,11 +54,11 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
     // 需要在判断 mPluginBinding == mull 之前先判断是否有初始化
     fun isPluginBindingValid() : Boolean {
       if (checkPluginBindingInit()) {
-//                Log.i("| XgpushpPlugin | Flutter | Android | ",
+//                Log.i("| FlutterHuajiPushPlugin | Flutter | Android | ",
 //                        "mPluginBinding initialzed, " + (mPluginBinding != null))
         return mPluginBinding != null
       } else {
-        Log.i("| XgpushpPlugin | Flutter | Android | ", "mPluginBinding not initialzed")
+        Log.i("| FlutterHuajiPushPlugin | Flutter | Android | ", "mPluginBinding not initialzed")
         return false
       }
     }
