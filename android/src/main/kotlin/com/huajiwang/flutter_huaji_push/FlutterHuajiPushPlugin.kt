@@ -42,7 +42,7 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
     lateinit var registrar: Registrar
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "tpns_flutter_plugin")
+      val channel = MethodChannel(registrar.messenger(), "flutter_huaji_push")
       channel.setMethodCallHandler(FlutterHuajiPushPlugin(registrar, channel))
     }
 
@@ -671,7 +671,7 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
 
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    val channel1 = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "tpns_flutter_plugin")
+    val channel1 = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_huaji_push")
     channel1.setMethodCallHandler(FlutterHuajiPushPlugin(flutterPluginBinding, channel1))
   }
 

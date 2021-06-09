@@ -13,7 +13,7 @@
 @implementation FlutterHuajiPushPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
    FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"tpns_flutter_plugin"
+      methodChannelWithName:@"flutter_huaji_push"
             binaryMessenger:[registrar messenger]];
   FlutterHuajiPushPlugin* instance = [[FlutterHuajiPushPlugin alloc] init];
   instance.channel = channel;

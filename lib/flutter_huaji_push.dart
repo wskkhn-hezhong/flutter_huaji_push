@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:io';
 
@@ -51,7 +50,7 @@ typedef Future<dynamic> EventHandlerMap(Map<String, dynamic> event);
 
 class FlutterHuajiPush {
   static const MethodChannel _channel =
-      const MethodChannel('tpns_flutter_plugin');
+      const MethodChannel('flutter_huaji_push');
   static XgAndroidApi xgApi = new XgAndroidApi(_channel);
 
   /// 注册推送服务失败回调
@@ -102,10 +101,9 @@ class FlutterHuajiPush {
   /// 获取安卓厂商 token，当前仅对安卓有效
   static Future<String> get otherPushToken async {
     if (Platform.isIOS) {
-      
     } else {
-      final String otherPushToken = await _channel.invokeMethod(
-          'getOtherPushToken');
+      final String otherPushToken =
+          await _channel.invokeMethod('getOtherPushToken');
       return otherPushToken;
     }
   }
@@ -113,10 +111,9 @@ class FlutterHuajiPush {
   /// 获取安卓厂商品牌，当前仅对安卓有效
   static Future<String> get otherPushType async {
     if (Platform.isIOS) {
-
     } else {
-      final String otherPushType = await _channel.invokeMethod(
-          'getOtherPushType');
+      final String otherPushType =
+          await _channel.invokeMethod('getOtherPushType');
       return otherPushType;
     }
   }

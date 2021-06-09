@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftFlutterHuajiPushPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "tpns_flutter_plugin", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "flutter_huaji_push", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterHuajiPushPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

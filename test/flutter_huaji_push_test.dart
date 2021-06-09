@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_huaji_push/flutter_huaji_push.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('tpns_flutter_plugin');
+  const MethodChannel channel = MethodChannel('flutter_huaji_push');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
