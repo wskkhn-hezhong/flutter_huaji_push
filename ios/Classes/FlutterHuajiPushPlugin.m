@@ -6,7 +6,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-@interface  XgFlutterPlugin()<XGPushDelegate, XGPushTokenManagerDelegate>
+@interface  FlutterHuajiPushPlugin()<XGPushDelegate, XGPushTokenManagerDelegate>
 
 @end
 

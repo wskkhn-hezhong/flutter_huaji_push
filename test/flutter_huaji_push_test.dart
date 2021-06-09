@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await FlutterHuajiPush.platformVersion, '42');
+    expect(await FlutterHuajiPush.xgSdkVersion, '42');
   });
 }

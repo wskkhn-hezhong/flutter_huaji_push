@@ -126,7 +126,7 @@ public class XGMessageReceiver extends XGPushBaseReceiver {
             Map<String, Object> para = new HashMap<>();
             para.put(Extras.RESULT_CODE, -1);
             para.put(Extras.MESSAGE, "点击通知失败----context == null ||  XGPushClickedResult == null");
-//            XgFlutterPlugin.instance.toFlutterMethod(
+//            FlutterHuajiPushPlugin.instance.toFlutterMethod(
 //                    Extras.TO_FLUTTER_METHOD_NOTIFACTION_SHOW_RESULT, para);
             return;
         }
