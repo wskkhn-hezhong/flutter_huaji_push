@@ -51,7 +51,7 @@ typedef Future<dynamic> EventHandlerMap(Map<String, dynamic> event);
 
 class FlutterHuajiPush {
   static const MethodChannel _channel =
-      const MethodChannel('flutter_huaji_push');
+      const MethodChannel('tpns_flutter_plugin');
   static XgAndroidApi xgApi = new XgAndroidApi(_channel);
 
   /// 注册推送服务失败回调
