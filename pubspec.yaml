@@ -1,8 +1,8 @@
 name: flutter_huaji_push
-description: A new Flutter plugin.
+description: TPNS flutter插件.
 version: 0.0.1
-author:
-homepage:
+author: wskkhn
+homepage: https://github.com/wskkhn-hezhong/flutter_huaji_push.git
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
