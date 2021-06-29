@@ -71,40 +71,44 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
       return
     }
     when (p0.method) {
-      Extras.FOR_FLUTTER_METHOD_REG_PUSH -> regPush(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_UNREGISTER_PUSH -> stopXg(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_TAG -> setXgTag(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_TAGS -> setXgTags(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_ADD_TAGS -> addXgTags(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_DELETE_TAG -> deleteXgTag(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_DELETE_TAGS -> deleteXgTags(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_CLEAN_TAGS -> cleanXgTags(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_GET_TOKEN -> xgToken(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_GET_SDK_VERSION -> xgSdkVersion(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_BIND_ACCOUNT -> bindAccount(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_APPEND_ACCOUNT -> appendAccount(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_DEL_ACCOUNT -> delAccount(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_DEL_ALL_ACCOUNT -> delAllAccount(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_ENABLE_OTHER_PUSH -> enableOtherPush(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_ENABLE_OTHER_PUSH2 -> enableOtherPush2(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_GET_OTHER_PUSH_TOKEN -> getOtherPushToken(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_GET_OTHER_PUSH_TYPE -> getOtherPushType(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_MI_PUSH_APP_ID -> setMiPushAppId(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_MI_PUSH_APP_KEY -> setMiPushAppKey(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_MZ_PUSH_ID -> setMzPushAppId(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_MZ_PUSH_KEY -> setMzPushAppKey(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_ENABLE_OPPO_NOTIFICATION -> enableOppoNotification(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_OPPO_PUSH_APP_KEY -> setOppoPushAppKey(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_OPPO_PUSH_APP_ID -> setOppoPushAppId(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_IS_MIUI_ROM -> isMiuiRom(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_IS_EMUI_ROM -> isEmuiRom(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_IS_MEIZU_ROM -> isMeizuRom(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_IS_OPPO_ROM -> isOppoRom(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_IS_VIVO_ROM -> isVivoRom(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_IS_FCM_ROM -> isFcmRom(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_IS_360_ROM -> is360Rom(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_ENABLE_DEBUG -> setEnableDebug(p0, p1)
-      Extras.FOR_FLUTTER_METHOD_SET_HEADER_BEAT_INTERVAL_MS -> setHeartbeatIntervalMs(p0, p1)
+     Extras.FOR_FLUTTER_METHOD_REG_PUSH -> regPush(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_UNREGISTER_PUSH -> stopXg(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_TAG -> setXgTag(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_TAGS -> setXgTags(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_ADD_TAGS -> addXgTags(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_DELETE_TAG -> deleteXgTag(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_DELETE_TAGS -> deleteXgTags(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_CLEAN_TAGS -> cleanXgTags(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_GET_TOKEN -> xgToken(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_GET_SDK_VERSION -> xgSdkVersion(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_BIND_ACCOUNT -> bindAccount(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_APPEND_ACCOUNT -> appendAccount(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_DEL_ACCOUNT -> delAccount(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_DEL_ALL_ACCOUNT -> delAllAccount(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_ENABLE_OTHER_PUSH -> enableOtherPush(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_ENABLE_OTHER_PUSH2 -> enableOtherPush2(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_GET_OTHER_PUSH_TOKEN -> getOtherPushToken(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_GET_OTHER_PUSH_TYPE -> getOtherPushType(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_ENABLE_PULL_UP_OTHER_APP -> enablePullUpOtherApp(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_BADGE_NUM -> setBadgeNum(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_RESET_BADGE_NUM -> resetBadgeNum(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_CANCEL_ALL_NOTIFICATION -> cancelAllNotification(p0, p1);
+            Extras.FOR_FLUTTER_METHOD_SET_MI_PUSH_APP_ID -> setMiPushAppId(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_MI_PUSH_APP_KEY -> setMiPushAppKey(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_MZ_PUSH_ID -> setMzPushAppId(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_MZ_PUSH_KEY -> setMzPushAppKey(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_ENABLE_OPPO_NOTIFICATION -> enableOppoNotification(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_OPPO_PUSH_APP_KEY -> setOppoPushAppKey(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_OPPO_PUSH_APP_ID -> setOppoPushAppId(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_IS_MIUI_ROM -> isMiuiRom(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_IS_EMUI_ROM -> isEmuiRom(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_IS_MEIZU_ROM -> isMeizuRom(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_IS_OPPO_ROM -> isOppoRom(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_IS_VIVO_ROM -> isVivoRom(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_IS_FCM_ROM -> isFcmRom(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_IS_360_ROM -> is360Rom(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_ENABLE_DEBUG -> setEnableDebug(p0, p1)
+            Extras.FOR_FLUTTER_METHOD_SET_HEADER_BEAT_INTERVAL_MS -> setHeartbeatIntervalMs(p0, p1)
     }
   }
 
@@ -528,6 +532,30 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
     Log.i(TAG, "调用信鸽SDK-->getOtherPushType()---otherPushType=${otherPushType}")
     result.success(otherPushType)
   }
+
+    fun enablePullUpOtherApp(call: MethodCall, result: MethodChannel.Result) {
+        val map = call.arguments<HashMap<String, Any>>()
+        val enable = map["enable"] as Boolean
+        Log.i(TAG, "调用信鸽SDK-->enablePullUpOtherApp()")
+        XGPushConfig.enablePullUpOtherApp(if (!isPluginBindingValid()) registrar.context() else mPluginBinding.applicationContext, enable)
+    }
+
+    fun setBadgeNum(call: MethodCall, result: MethodChannel.Result?) {
+        val map = call.arguments<Map<String, Int>>()
+        val badgeNum = map[Extras.BADGE_NUM] as Int
+        Log.i(TAG, "调用信鸽SDK-->setBadgeNum()-----badgeNum=${badgeNum}")
+        XGPushConfig.setBadgeNum(if (!isPluginBindingValid()) registrar.context() else mPluginBinding.applicationContext, badgeNum)
+    }
+
+    fun resetBadgeNum(call: MethodCall, result: MethodChannel.Result?) {
+        Log.i(TAG, "调用信鸽SDK-->resetBadgeNum()")
+        XGPushConfig.resetBadgeNum(if (!isPluginBindingValid()) registrar.context() else mPluginBinding.applicationContext)
+    }
+
+    fun cancelAllNotification(call: MethodCall, result: MethodChannel.Result?) {
+        Log.i(TAG, "调用信鸽SDK-->cancelAllNotification()")
+        XGPushManager.cancelAllNotifaction(if (!isPluginBindingValid()) registrar.context() else mPluginBinding.applicationContext)
+    }
 
 
   /**
