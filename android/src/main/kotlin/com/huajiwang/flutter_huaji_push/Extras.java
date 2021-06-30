@@ -24,6 +24,8 @@ public interface Extras {
     String APP_ID = "appId";
     String HEADER_BEAT_INTERVAL_MS = "heartBeatIntervalMs";
     String XG_PUSH_DID_SET_BADGE = "xgPushDidSetBadge";
+    String BADGE_NUM = "badgeNum";
+
 
     //Flutter调用native的函数名称
     String FOR_FLUTTER_METHOD_REG_PUSH = "regPush";
