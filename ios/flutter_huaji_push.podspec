@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_huaji_push'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
 A new Flutter plugin.
@@ -12,7 +12,7 @@ A new Flutter plugin.
   s.homepage         = 'https://github.com/wskkhn-hezhong/flutter_huaji_push.git'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'huaji' => 'wskkhn001@gmail.com' }
-  s.source           = { :git => "https://github.com/wskkhn-hezhong/flutter_huaji_push.git", :branch => "V0.0.2" }
+  s.source           = { :git => "https://github.com/wskkhn-hezhong/flutter_huaji_push.git", :branch => "V0.0.3" }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'TPNS-iOS', '1.2.9.0'

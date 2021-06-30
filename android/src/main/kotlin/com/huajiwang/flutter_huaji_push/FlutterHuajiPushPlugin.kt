@@ -10,14 +10,14 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
+import java.util.*
 
+public var TAG = "| FlutterHuajiPushPlugin | Flutter | Android | "
 
 
 /** FlutterHuajiPushPlugin */
 class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
-  private var TAG = "| FlutterHuajiPushPlugin | Flutter | Android | "
 
   constructor() {
     instance = this
@@ -54,11 +54,11 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
     // 需要在判断 mPluginBinding == mull 之前先判断是否有初始化
     fun isPluginBindingValid() : Boolean {
       if (checkPluginBindingInit()) {
-//                Log.i("| FlutterHuajiPushPlugin | Flutter | Android | ",
+//                Log.i("| XgpushpPlugin | Flutter | Android | ",
 //                        "mPluginBinding initialzed, " + (mPluginBinding != null))
-        return mPluginBinding != null
+        return  true
       } else {
-        Log.i("| FlutterHuajiPushPlugin | Flutter | Android | ", "mPluginBinding not initialzed")
+        Log.i(TAG, "mPluginBinding not initialzed")
         return false
       }
     }
@@ -119,7 +119,7 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
    * @param methodName 函数名称
    * @param para       参数
    */
-  fun toFlutterMethod(methodName: String, para: Map<String, Any?>?) {
+  fun toFlutterMethod(methodName: String, para: Map<String, Any>) {
     Log.i(TAG, "调用Flutter=>${methodName}")
     MainHandler.getInstance().post { channel.invokeMethod(methodName, para) }
   }
@@ -132,7 +132,7 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
   /**
    * 信鸽推送注册
    */
-  fun regPush(call: MethodCall?, result: MethodChannel.Result?) {
+  fun regPush(call: MethodCall, result: MethodChannel.Result) {
     Log.i(TAG, "调用信鸽SDK-->registerPush()")
     XGPushManager.registerPush(if (!isPluginBindingValid()) registrar.context() else mPluginBinding.applicationContext)
   }
