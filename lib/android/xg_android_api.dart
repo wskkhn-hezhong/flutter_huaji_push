@@ -6,8 +6,8 @@ import 'native_event_handler.dart';
 
 class XgAndroidApi {
   final String flutter_log = "| XGPUSH | Flutter | ";
-  static MethodChannel _channel;
-  NativeEventHandler _eventHandler;
+  static late MethodChannel _channel;
+  late NativeEventHandler _eventHandler;
 
   XgAndroidApi(MethodChannel channel) {
     _channel = channel;
@@ -20,7 +20,6 @@ class XgAndroidApi {
   }
 
   Future<Null> _handleMethod(MethodCall call) async {
-    if (this._eventHandler == null) return;
     Map para = call.arguments;
     switch (call.method) {
       case "onRegisterPushSuccess":
@@ -99,13 +98,13 @@ class XgAndroidApi {
 
   ///开启debug模式
   ///debug 是否为debug模式 默认不是
-  void setEnableDebug({bool debug}) {
+  void setEnableDebug({required bool debug}) {
     _channel.invokeMethod('setEnableDebug', {'enableDebug': debug});
   }
 
   /// 设置心跳时间间隔
   /// interval 心跳间隔
-  void setHeartbeatIntervalMs({int interval}) {
+  void setHeartbeatIntervalMs({ required int interval}) {
     _channel.invokeMethod(
         'setHeartbeatIntervalMs', {'heartBeatIntervalMs': interval});
   }
@@ -118,13 +117,13 @@ class XgAndroidApi {
   }
 
   ///设置标签
-  void setXgTag({String tagName}) {
+  void setXgTag({required String tagName}) {
     _channel.invokeMethod('setXgTag', {'tagName': tagName});
   }
 
   /// 设置多tag tagNames为List<String>tag的集合
   /// 一次设置多个标签，会覆盖这个设备之前设置的标签。
-  void setXgTags({List tagNames}) {
+  void setXgTags({required List tagNames}) {
     _channel.invokeMethod('setXgTags', {'tagNames': tagNames});
   }
 
@@ -137,19 +136,19 @@ class XgAndroidApi {
   /// <p>
   /// 新增的 tags 中，:号为后台关键字，请根据具体的业务场景使用。
   /// 此接口调用的时候需要间隔一段时间（建议大于5s），否则可能造成更新失败。
-  void addXgTags({List tagNames}) {
+  void addXgTags({required List tagNames}) {
     _channel.invokeMethod('addXgTags', {'tagNames': tagNames});
   }
 
   ///删除指定标签
-  void deleteXgTag({String tagName}) {
+  void deleteXgTag({required String tagName}) {
     _channel.invokeMethod('deleteXgTag', {'tagName': tagName});
   }
 
   ///删除多个标签
   ///Set 标签名集合，每个标签是一个 String。限制：每个 tag 不能超过40字节（超过会抛弃），
   ///不能包含空格（含有空格会删除空格）。最多设置1000个tag，超过部分会抛弃。
-  void deleteXgTags({List tagNames}) {
+  void deleteXgTags({required List tagNames}) {
     _channel.invokeMethod('deleteXgTags', {'tagNames': tagNames});
   }
 
@@ -168,33 +167,36 @@ class XgAndroidApi {
 
   ///绑定账号
   ///推荐有账号体系的App使用（此接口会覆盖设备之前绑定过的账号，仅当前注册的账号生效）
-  void bindAccount({String account}) {
+  void bindAccount({required String account}) {
     _channel.invokeMethod('bindAccount', {'account': account});
   }
 
-  void bindAccountWithType({String account, String accountType}) {
-    _channel.invokeMethod('bindAccount', {'account': account, 'accountType': accountType});
+  void bindAccountWithType({required String account,required  String accountType}) {
+    _channel.invokeMethod(
+        'bindAccount', {'account': account, 'accountType': accountType});
   }
 
   ///添加账号
   ///推荐有账号体系的App使用（此接口保留之前的账号，只做增加操作，
   ///一个token下最多只能有10个账号超过限制会自动顶掉之前绑定的账号，)
-  void appendAccount({String account}) {
+  void appendAccount({required String account}) {
     _channel.invokeMethod('appendAccount', {'account': account});
   }
 
-  void appendAccountWithType({String account, String accountType}) {
-    _channel.invokeMethod('appendAccount', {'account': account, 'accountType': accountType});
+  void appendAccountWithType({required String account,required  String accountType}) {
+    _channel.invokeMethod(
+        'appendAccount', {'account': account, 'accountType': accountType});
   }
 
   ///删除注册账号
   ///账号解绑只是解除 Token 与 App 账号的关联，若使用全量/标签/Token 推送仍然能收到通知/消息。
-  void delAccount({String account}) {
+  void delAccount({required String account}) {
     _channel.invokeMethod('delAccount', {'account': account});
   }
-  
-  void delAccountWithType({String account, String accountType}) {
-    _channel.invokeMethod('delAccount', {'account': account, 'accountType': accountType});
+
+  void delAccountWithType({required String account,required  String accountType}) {
+    _channel.invokeMethod(
+        'delAccount', {'account': account, 'accountType': accountType});
   }
 
   ///清除全部账号
@@ -210,53 +212,54 @@ class XgAndroidApi {
   }
 
   /// 开启其他推送
-  void enableOtherPush2({bool enable}) {
+  void enableOtherPush2({required bool enable}) {
     _channel.invokeMethod('enableOtherPush2', {'enable': enable});
   }
 
   /// 获取厂商推送 token
   Future<String> getOtherPushToken() async {
-    final String otherPushToken = await _channel.invokeMethod('getOtherPushToken');
+    final String otherPushToken =
+        await _channel.invokeMethod('getOtherPushToken');
     return otherPushToken;
   }
 
   /// 获取厂商推送品牌
   Future<String> getOtherPushType() async {
-    final String otherPushType = await _channel.invokeMethod('getOtherPushType');
+    final String otherPushType =
+        await _channel.invokeMethod('getOtherPushType');
     return otherPushType;
   }
 
-   /*-------------------角标控制---------------*/
+  /*-------------------角标控制---------------*/
 
   /// 接设置应用角标，
   /// 当前支持华为、OPPO、vivo，其中 OPPO 需另外向厂商申请角标展示权限
-  void setBadgeNum({int badgeNum}) {
-    _channel?.invokeMethod('setBadgeNum', {'badgeNum': badgeNum});
+  void setBadgeNum({required  int badgeNum}) {
+    _channel.invokeMethod('setBadgeNum', {'badgeNum': badgeNum});
   }
 
   /// 设置手机应用角标归0，建议在应用打开时将角标清0，
   /// 当前支持华为、OPPO、vivo，其中 OPPO 需另外向厂商申请角标展示权限
   void resetBadgeNum() {
-    _channel?.invokeMethod('resetBadgeNum');
+    _channel.invokeMethod('resetBadgeNum');
   }
-
 
   /// 清空当前应用在通知栏的通知
   void cancelAllNotification() {
-    _channel?.invokeMethod('cancelAllNotification');
+    _channel.invokeMethod('cancelAllNotification');
   }
 
   /*----------------小米厂商通道集成-----------*/
 
   /// 设置小米推送的APP_ID
   /// aappId为在小米平台注册所得Id
-  void setMiPushAppId({String appId}) {
+  void setMiPushAppId({required String appId}) {
     _channel.invokeMethod('setMiPushAppId', {'appId': appId});
   }
 
   /// 设置小米推送的APP_KEY
   ///appKey 为在小米平台注册所得key
-  void setMiPushAppKey({String appKey}) {
+  void setMiPushAppKey({required String appKey}) {
     _channel.invokeMethod('setMiPushAppKey', {'appKey': appKey});
   }
 
@@ -269,7 +272,7 @@ class XgAndroidApi {
   ///开启小米厂商通道
   ///appId  为在小米平台注册所得Id
   ///appKey 为在小米平台注册所得key
-  void startMiPush({String appId, String appKey}) async {
+  void startMiPush({required String appId, required String appKey}) async {
     final bool isMIUI = await _channel.invokeMethod('isMiuiRom');
     if (isMIUI) {
       _channel.invokeMethod('setMiPushAppId', {'appId': appId});
@@ -300,20 +303,20 @@ class XgAndroidApi {
 
   ///开启Oppo通知
   ///isNotification 是否开启OPPO通知
-  void enableOppoNotification({bool isNotification}) {
+  void enableOppoNotification({required bool isNotification}) {
     _channel.invokeMethod(
         'enableOppoNotification', {'isNotification': isNotification});
   }
 
   ///设置Oppo推送ID
   ///appId为在Oppo平台注册所得Id
-  void setOppoPushAppId({String appId}) {
+  void setOppoPushAppId({required String appId}) {
     _channel.invokeMethod('setOppoPushAppId', {'appId': appId});
   }
 
   ///设置Oppo推送Key
   ///appKey为在Oppo平台注册所得Key
-  void setOppoPushAppKey({String appKey}) {
+  void setOppoPushAppKey({required String appKey}) {
     _channel.invokeMethod('setOppoPushAppKey', {'appKey': appKey});
   }
 
@@ -327,7 +330,7 @@ class XgAndroidApi {
   ///isNotification 是否开启OPPO通知
   /// appId为在Oppo平台注册所得Id
   /// appKey为在Oppo平台注册所得Key
-  void startOPPOPush({String appId, String appKey, bool isNotification}) async {
+  void startOPPOPush({required String appId,required  String appKey,required  bool isNotification}) async {
     final bool isOppo = await _channel.invokeMethod('isOppoRom');
     if (isOppo) {
       _channel.invokeMethod(
@@ -360,13 +363,13 @@ class XgAndroidApi {
 
   ///设置魅族推送所需appID
   ///appId为在魅族平台注册所得Id
-  void setMzPushAppId({String appId}) {
+  void setMzPushAppId({required String appId}) {
     _channel.invokeMethod('setMzPushAppId', {'appId': appId});
   }
 
   ///设置魅族推送所需appKey
   ///appKey为在魅族平台注册所得key
-  void setMzPushAppKey({String appKey}) {
+  void setMzPushAppKey({required String appKey}) {
     _channel.invokeMethod('setMzPushAppKey', {'appKey': appKey});
   }
 
@@ -379,7 +382,7 @@ class XgAndroidApi {
   ///开启魅族手机厂商通道
   ///appId为在魅族平台注册所得Id
   ///appKey为在魅族平台注册所得key
-  void startMeizuPush({String appId, String appKey}) async {
+  void startMeizuPush({required String appId, required String appKey}) async {
     final bool isMeiZu = await _channel.invokeMethod('isMeizuRom');
     if (isMeiZu) {
       _channel.invokeMethod('setMzPushAppId', {'appId': appId});
