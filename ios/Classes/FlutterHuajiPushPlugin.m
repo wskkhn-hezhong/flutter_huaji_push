@@ -49,20 +49,6 @@
       [self deleteTags:call result:result];
   } else if([@"cleanTags" isEqualToString:call.method]) {
       [[XGPushTokenManager defaultTokenManager] clearTags];
-  } else if([@"bindWithIdentifier" isEqualToString:call.method]) {
-      [self bindWithIdentifier:call result:result];
-  } else if([@"updateBindIdentifier" isEqualToString:call.method]) {
-      [self updateBindIdentifier:call result:result];
-  } else if([@"unbindWithIdentifier" isEqualToString:call.method]) {
-      [self unbindWithIdentifier:call result:result];
-  } else if([@"bindWithIdentifiers" isEqualToString:call.method]) {
-      [self bindWithIdentifiers:call result:result];
-  } else if([@"updateBindIdentifiers" isEqualToString:call.method]) {
-      [self updateBindIdentifiers:call result:result];
-  } else if([@"unbindWithIdentifiers" isEqualToString:call.method]) {
-      [self unbindWithIdentifiers:call result:result];
-  } else if([@"clearAllIdentifier" isEqualToString:call.method]) {
-      [self clearAllIdentifier:call result:result];
   } else if([@"setBadge" isEqualToString:call.method]) {
       [self setBadge:call result:result];
   } else if([@"setAppBadge" isEqualToString:call.method]) {
@@ -77,41 +63,7 @@
 }
 
 - (NSUInteger)getAccountType:(NSString *)typeStr {
-    if ([typeStr isEqualToString:@"UNKNOWN"] || [typeStr isEqualToString:@"IMEI"]) {
-        return XGPushTokenAccountTypeUNKNOWN;
-    } else if ([typeStr isEqualToString:@"CUSTOM"]) {
-        return XGPushTokenAccountTypeCUSTOM;
-    } else if ([typeStr isEqualToString:@"IDFA"]) {
-        return XGPushTokenAccountTypeIDFA;
-    } else if ([typeStr isEqualToString:@"PHONE_NUMBER"]) {
-        return XGPushTokenAccountTypePHONE_NUMBER;
-    } else if ([typeStr isEqualToString:@"WX_OPEN_ID"]) {
-        return XGPushTokenAccountTypeWX_OPEN_ID;
-    } else if ([typeStr isEqualToString:@"QQ_OPEN_ID"]) {
-        return XGPushTokenAccountTypeQQ_OPEN_ID;
-    } else if ([typeStr isEqualToString:@"EMAIL"]) {
-        return XGPushTokenAccountTypeEMAIL;
-    } else if ([typeStr isEqualToString:@"SINA_WEIBO"]) {
-        return XGPushTokenAccountTypeSINA_WEIBO;
-    } else if ([typeStr isEqualToString:@"ALIPAY"]) {
-        return XGPushTokenAccountTypeALIPAY;
-    } else if ([typeStr isEqualToString:@"TAOBAO"]) {
-        return XGPushTokenAccountTypeTAOBAO;
-    } else if ([typeStr isEqualToString:@"DOUBAN"]) {
-        return XGPushTokenAccountTypeDOUBAN;
-    } else if ([typeStr isEqualToString:@"FACEBOOK"]) {
-        return XGPushTokenAccountTypeFACEBOOK;
-    } else if ([typeStr isEqualToString:@"TWITTER"]) {
-        return XGPushTokenAccountTypeTWITTER;
-    } else if ([typeStr isEqualToString:@"GOOGLE"]) {
-        return XGPushTokenAccountTypeGOOGLE;
-    } else if ([typeStr isEqualToString:@"BAIDU"]) {
-        return XGPushTokenAccountTypeBAIDU;
-    } else if ([typeStr isEqualToString:@"JINGDONG"]) {
-        return XGPushTokenAccountTypeJINGDONG;
-    } else if ([typeStr isEqualToString:@"LINKEDIN"]) {
-        return XGPushTokenAccountTypeLINKEDIN;
-    } else return XGPushTokenAccountTypeUNKNOWN;
+    return 0;
 }
 
 /// 集群域名配置（非广州集群需要在startXg之前调用此函数）
@@ -170,51 +122,6 @@
 
 /**===================================V1.0.4废弃账号标签接口===================================*/
 
-/// 绑定标签或账号
-- (void)bindWithIdentifier:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSDictionary *configurationInfo = call.arguments;
-    [[XGPushTokenManager defaultTokenManager] bindWithIdentifier:configurationInfo[@"identify"] type:[configurationInfo[@"bindType"] integerValue]];
-}
-
-/// 更新标签或账号
-- (void)updateBindIdentifier:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSDictionary *configurationInfo = call.arguments;
-    if ([configurationInfo[@"bindType"] integerValue] == XGPushTokenBindTypeAccount) {
-        [[XGPushTokenManager defaultTokenManager] updateBindedIdentifiers:@[@{@"account" : configurationInfo[@"identify"], @"accountType" : @(0)}] bindType:[configurationInfo[@"bindType"] integerValue]];
-    } else if ([configurationInfo[@"bindType"] integerValue] == XGPushTokenBindTypeTag) {
-        [[XGPushTokenManager defaultTokenManager] updateBindedIdentifiers:@[configurationInfo[@"identify"]] bindType:[configurationInfo[@"bindType"] integerValue]];
-    }
-}
-
-/// 解绑标签或账号
-- (void)unbindWithIdentifier:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSDictionary *configurationInfo = call.arguments;
-    [[XGPushTokenManager defaultTokenManager] unbindWithIdentifer:configurationInfo[@"identify"] type:[configurationInfo[@"bindType"] integerValue]];
-}
-
-/// 批量绑定标签或账号
-- (void)bindWithIdentifiers:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSDictionary *configurationInfo = call.arguments;
-    [[XGPushTokenManager defaultTokenManager] bindWithIdentifiers:configurationInfo[@"identifys"] type:[configurationInfo[@"bindType"] integerValue]];
-}
-
-/// 批量更新标签或账号
-- (void)updateBindIdentifiers:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSDictionary *configurationInfo = call.arguments;
-    [[XGPushTokenManager defaultTokenManager] updateBindedIdentifiers:configurationInfo[@"identifys"] bindType:[configurationInfo[@"bindType"] integerValue]];
-}
-
-/// 批量解绑标签或账号
-- (void)unbindWithIdentifiers:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSDictionary *configurationInfo = call.arguments;
-    [[XGPushTokenManager defaultTokenManager] unbindWithIdentifers:configurationInfo[@"identifys"] type:[configurationInfo[@"bindType"] integerValue]];
-}
-
-/// 清除所有标签或账号
-- (void)clearAllIdentifier:(FlutterMethodCall*)call result:(FlutterResult)result {
-    NSDictionary *configurationInfo = call.arguments;
-    [[XGPushTokenManager defaultTokenManager] clearAllIdentifiers:[configurationInfo[@"bindType"] integerValue]];
-}
 
 /**==========================================================================*/
 
@@ -252,7 +159,7 @@
 /// @param deviceToken APNs 生成的Device Token
 /// @param xgToken TPNS 生成的 Token，推送消息时需要使用此值。TPNS 维护此值与APNs 的 Device Token的映射关系
 /// @param error 错误信息，若error为nil则注册推送服务成功
-- (void)xgPushDidRegisteredDeviceToken:(nullable NSString *)deviceToken xgToken:(nullable NSString *)xgToken error:(nullable NSError *)error {
+- (void)xgPushDidRegisteredDeviceToken:(nullable NSString *)deviceToken xgToken:(nullable NSString *)xgToken  error:(nullable NSError *)error {
     if (!error) {
         [_channel invokeMethod:@"onRegisteredDone" arguments:deviceToken];
         [[XGPushTokenManager defaultTokenManager] setDelegate:self];
@@ -353,42 +260,6 @@
 }
 
 /**=======================================================================*/
-
-- (void)xgPushDidBindWithIdentifier:(NSString *)identifier type:(XGPushTokenBindType)type error:(NSError *)error {
-    NSString *argumentDescribe = type == XGPushTokenBindTypeAccount ? @"绑定账号" : @"绑定标签";
-    NSString *resultStr = error == nil ? @"成功" : [NSString stringWithFormat:@"失败，error:%@", error.description];
-    [_channel invokeMethod:@"xgPushDidBindWithIdentifier" arguments:[NSString stringWithFormat:@"%@%@", argumentDescribe, resultStr]];
-}
-
-- (void)xgPushDidUnbindWithIdentifier:(NSString *)identifier type:(XGPushTokenBindType)type error:(NSError *)error {
-    NSString *argumentDescribe = type == XGPushTokenBindTypeAccount ? @"解绑账号" : @"解绑标签";
-    NSString *resultStr = error == nil ? @"成功" : [NSString stringWithFormat:@"失败，error:%@", error.description];
-    [_channel invokeMethod:@"xgPushDidUnbindWithIdentifier" arguments:[NSString stringWithFormat:@"%@%@", argumentDescribe, resultStr]];
-}
-
-- (void)xgPushDidBindWithIdentifiers:(NSArray<NSString *> *)identifiers type:(XGPushTokenBindType)type error:(NSError *)error {
-    NSString *argumentDescribe = type == XGPushTokenBindTypeAccount ? @"绑定账号" : @"绑定标签";
-    NSString *resultStr = error == nil ? @"成功" : [NSString stringWithFormat:@"失败，error:%@", error.description];
-    [_channel invokeMethod:@"xgPushDidBindWithIdentifier" arguments:[NSString stringWithFormat:@"%@%@", argumentDescribe, resultStr]];
-}
-
-- (void)xgPushDidUnbindWithIdentifiers:(NSArray<NSString *> *)identifiers type:(XGPushTokenBindType)type error:(NSError *)error {
-    NSString *argumentDescribe = type == XGPushTokenBindTypeAccount ? @"解绑账号" : @"解绑标签";
-    NSString *resultStr = error == nil ? @"成功" : [NSString stringWithFormat:@"失败，error:%@", error.description];
-    [_channel invokeMethod:@"xgPushDidUnbindWithIdentifier" arguments:[NSString stringWithFormat:@"%@%@", argumentDescribe, resultStr]];
-}
-
-- (void)xgPushDidUpdatedBindedIdentifiers:(NSArray<NSString *> *)identifiers bindType:(XGPushTokenBindType)type error:(NSError *)error {
-    NSString *argumentDescribe = type == XGPushTokenBindTypeAccount ? @"设置账号" : @"更新标签";
-    NSString *resultStr = error == nil ? @"成功" : [NSString stringWithFormat:@"失败，error:%@", error.description];
-    [_channel invokeMethod:@"xgPushDidUpdatedBindedIdentifier" arguments:[NSString stringWithFormat:@"%@%@", argumentDescribe, resultStr]];
-}
-
-- (void)xgPushDidClearAllIdentifiers:(XGPushTokenBindType)type error:(NSError *)error {
-    NSString *argumentDescribe = type == XGPushTokenBindTypeAccount ? @"清除账号" : @"清除标签";
-    NSString *resultStr = error == nil ? @"成功" : [NSString stringWithFormat:@"失败，error:%@", error.description];
-    [_channel invokeMethod:@"xgPushDidClearAllIdentifiers" arguments:[NSString stringWithFormat:@"%@%@", argumentDescribe, resultStr]];
-}
 
 #pragma mark - AppDelegate
 
