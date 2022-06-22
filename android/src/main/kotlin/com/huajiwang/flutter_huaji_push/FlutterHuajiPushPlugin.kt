@@ -1,5 +1,6 @@
 package com.huajiwang.flutter_huaji_push
 
+import android.net.Uri;
 import android.util.Log
 import androidx.annotation.NonNull
 import com.tencent.android.tpush.XGIOperateCallback
@@ -44,7 +45,7 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
     fun registerWith(registrar: Registrar) {
       val channel = MethodChannel(registrar.messenger(), "flutter_huaji_push")
       channel.setMethodCallHandler(FlutterHuajiPushPlugin(registrar, channel))
-        Log.i("| XgpushpPlugin | Flutter | Android | ", "methodChannel registerWith XgFlutterPlugin")
+        Log.i("| XgpushpPlugin | Flutter | Android | ", "methodChannel registerWith FlutterHuajiPushPlugin")
         Log.i("| XgpushpPlugin | Flutter | Android | ", "instance = " + instance)
     }
 
@@ -834,9 +835,9 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         val channel1 = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_huaji_push")
-        channel1.setMethodCallHandler(XgFlutterPlugin(flutterPluginBinding, channel1))
+        channel1.setMethodCallHandler(FlutterHuajiPushPlugin(flutterPluginBinding, channel1))
 
-        Log.i("| XgpushpPlugin | Flutter | Android | ", "methodChannel onAttachedToEngine XgFlutterPlugin")
+        Log.i("| XgpushpPlugin | Flutter | Android | ", "methodChannel onAttachedToEngine FlutterHuajiPushPlugin")
         Log.i("| XgpushpPlugin | Flutter | Android | ", "onAttachedToEngine instance = " + instance)
         XGMessageReceiver.sendHandlerMessage()
     }

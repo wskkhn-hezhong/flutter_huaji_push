@@ -101,7 +101,7 @@
 > 说明：XgAndroidApi 为针对安卓独立接口的内部再次封装，可以通过 `FlutterHuajiPush.xgApi` 直接访问，例如：
 > ```dart
 >     // 调用示例：开启厂商其他推送接口
->     XgFlutterPlugin.xgApi.enableOtherPush()
+>     FlutterHuajiPushPlugin.xgApi.enableOtherPush()
 > ```
 
 #### 1  开启其他推送
