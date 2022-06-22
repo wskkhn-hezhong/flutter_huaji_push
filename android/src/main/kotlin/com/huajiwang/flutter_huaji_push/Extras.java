@@ -1,10 +1,11 @@
 package com.huajiwang.flutter_huaji_push;
 
 public interface Extras {
-    //参数
+  //参数
     String DEBUG = "enableDebug";
     String TAG_NAME = "tagName";  //tag名称
     String TAG_NAMES = "tagNames"; //tag名称集合
+    String ATTRIBUTES = "attributes";
     String CONTENT = "content";  //
     String RESULT_CODE = "resultCode";
     String MESSAGE = "message";
@@ -25,7 +26,12 @@ public interface Extras {
     String HEADER_BEAT_INTERVAL_MS = "heartBeatIntervalMs";
     String XG_PUSH_DID_SET_BADGE = "xgPushDidSetBadge";
     String BADGE_NUM = "badgeNum";
-
+    String CHANNEL_ID = "channelId";
+    String CHANNEL_NAME = "channelName";
+    String ENABLE_VIBRATION = "enableVibration";
+    String ENABLE_LIGHTS = "enableLights";
+    String ENABLE_SOUND = "enableSound";
+    String SOUND_FILE_NAME = "soundFileName";
 
     //Flutter调用native的函数名称
     String FOR_FLUTTER_METHOD_REG_PUSH = "regPush";
@@ -42,6 +48,10 @@ public interface Extras {
     String FOR_FLUTTER_METHOD_APPEND_ACCOUNT = "appendAccount";
     String FOR_FLUTTER_METHOD_DEL_ACCOUNT = "delAccount";
     String FOR_FLUTTER_METHOD_DEL_ALL_ACCOUNT = "delAllAccount";
+    String FOR_FLUTTER_METHOD_UPSERT_ATTRIBUTES = "upsertAttributes";
+    String FOR_FLUTTER_METHOD_DEL_ATTRIBUTES = "delAttributes";
+    String FOR_FLUTTER_METHOD_CLEAR_AND_APPEND_ATTRIBUTES = "clearAndAppendAttributes";
+    String FOR_FLUTTER_METHOD_CLEAR_ATTRIBUTES = "clearAttributes";
     String FOR_FLUTTER_METHOD_ENABLE_OTHER_PUSH = "enableOtherPush";
     String FOR_FLUTTER_METHOD_ENABLE_OTHER_PUSH2 = "enableOtherPush2";
     String FOR_FLUTTER_METHOD_GET_OTHER_PUSH_TOKEN = "getOtherPushToken";
@@ -50,6 +60,7 @@ public interface Extras {
     String FOR_FLUTTER_METHOD_SET_BADGE_NUM = "setBadgeNum";
     String FOR_FLUTTER_METHOD_RESET_BADGE_NUM = "resetBadgeNum";
     String FOR_FLUTTER_METHOD_CANCEL_ALL_NOTIFICATION = "cancelAllNotification";
+    String FOR_FLUTTER_METHOD_CREATE_NOTIFICATION_CHANNEL = "createNotificationChannel";
     String FOR_FLUTTER_METHOD_SET_MI_PUSH_APP_ID = "setMiPushAppId";
     String FOR_FLUTTER_METHOD_SET_MI_PUSH_APP_KEY = "setMiPushAppKey";
     String FOR_FLUTTER_METHOD_SET_MZ_PUSH_ID = "setMzPushAppId";
@@ -64,6 +75,7 @@ public interface Extras {
     String FOR_FLUTTER_METHOD_IS_VIVO_ROM = "isVivoRom";
     String FOR_FLUTTER_METHOD_IS_360_ROM = "is360Rom";
     String FOR_FLUTTER_METHOD_IS_FCM_ROM = "isFcmRom";
+    String FOR_FLUTTER_METHOD_IS_GOOGLE_ROM = "isGoogleRom";
     String FOR_FLUTTER_METHOD_ENABLE_DEBUG = "setEnableDebug";
     String FOR_FLUTTER_METHOD_SET_HEADER_BEAT_INTERVAL_MS = "setHeartbeatIntervalMs";
 

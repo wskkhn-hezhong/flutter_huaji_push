@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_huaji_push (0.1.0):
+  - flutter_huaji_push (1.0.0):
     - Flutter
     - TPNS-iOS (= 1.3.4.1)
   - TPNS-iOS (1.3.4.1)

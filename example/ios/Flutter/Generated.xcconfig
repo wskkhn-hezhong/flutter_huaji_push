@@ -9,5 +9,5 @@ FLUTTER_BUILD_NUMBER=1
 EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=false
-TREE_SHAKE_ICONS=true
-PACKAGE_CONFIG=/Users/hezhong/Work/flutter_huaji_push/example/.dart_tool/package_config.json
+TREE_SHAKE_ICONS=false
+PACKAGE_CONFIG=.packages

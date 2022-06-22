@@ -264,8 +264,25 @@
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+      /// 远程通知APNs通道
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (remoteNotification) {
+    if (!remoteNotification) {
+        /// 远程通知TPNS通道
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+        if (localNotification && [localNotification isKindOfClass:[UILocalNotification class]]) {
+        NSDictionary *tpnsInfo = [localNotification.userInfo objectForKey:@"xg"];
+        if (tpnsInfo && [tpnsInfo isKindOfClass:[NSDictionary class]]) {
+            NSNumber *msgType = [tpnsInfo objectForKey:@"msgtype"];
+            if (msgType && [msgType isKindOfClass:[NSNumber class]] && msgType.intValue == 1) {
+                remoteNotification = localNotification.userInfo;
+            }
+        }
+#pragma clang diagnostic pop
+    }
+    }
+    if (remoteNotification && [remoteNotification isKindOfClass:[NSDictionary class]]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self->_channel invokeMethod:@"xgPushClickAction" arguments:remoteNotification];
         });
