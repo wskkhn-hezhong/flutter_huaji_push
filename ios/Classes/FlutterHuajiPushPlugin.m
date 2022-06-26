@@ -225,7 +225,7 @@
 
 #pragma mark - XGPushTokenManagerDelegate
 
-/**===============================V1.0.7新增===============================*/
+/**===============================V1.0.9新增===============================*/
 
 - (void)xgPushDidUpsertAccountsByDict:(NSDictionary *)accountsDict error:(NSError *)error {
     NSString *resultStr = error == nil ? @"设置账号成功" : [NSString stringWithFormat:@"设置账号失败，error:%@", error.description];
