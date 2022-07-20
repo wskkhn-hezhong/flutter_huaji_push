@@ -19,16 +19,6 @@ import java.util.UUID;
  */
 public class DeviceInfoUtil {
 
-    /* 获取手机唯一序列号 */
-    public static String getDeviceId(Context context) {
-        TelephonyManager tm =
-                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String deviceId = tm.getDeviceId();// 手机设备ID，这个ID会被用为用户访问统计
-        if (deviceId == null) {
-            deviceId = UUID.randomUUID().toString().replaceAll("-", "");
-        }
-        return deviceId;
-    }
 
     /* 获取操作系统版本号 */
     public static String getOsVersion() {
