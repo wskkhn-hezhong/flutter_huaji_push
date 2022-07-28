@@ -3,6 +3,7 @@ package com.huajiwang.flutter_huaji_push;
 public interface Extras {
   //参数
     String DEBUG = "enableDebug";
+    String AUTOINIT = "autoInit";
     String TAG_NAME = "tagName";  //tag名称
     String TAG_NAMES = "tagNames"; //tag名称集合
     String ATTRIBUTES = "attributes";
@@ -77,6 +78,7 @@ public interface Extras {
     String FOR_FLUTTER_METHOD_IS_FCM_ROM = "isFcmRom";
     String FOR_FLUTTER_METHOD_IS_GOOGLE_ROM = "isGoogleRom";
     String FOR_FLUTTER_METHOD_ENABLE_DEBUG = "setEnableDebug";
+    String FOR_FLUTTER_METHOD_AUTO_INIT = "setAutoInit";
     String FOR_FLUTTER_METHOD_SET_HEADER_BEAT_INTERVAL_MS = "setHeartbeatIntervalMs";
 
 
