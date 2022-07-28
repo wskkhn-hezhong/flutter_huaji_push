@@ -117,7 +117,6 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
             Extras.FOR_FLUTTER_METHOD_IS_GOOGLE_ROM -> isGoogleRom(p0, p1)
             Extras.FOR_FLUTTER_METHOD_IS_360_ROM -> is360Rom(p0, p1)
             Extras.FOR_FLUTTER_METHOD_ENABLE_DEBUG -> setEnableDebug(p0, p1)
-            Extras.FOR_FLUTTER_METHOD_AUTO_INIT -> setAutoInit(p0, p1)
             Extras.FOR_FLUTTER_METHOD_SET_HEADER_BEAT_INTERVAL_MS -> setHeartbeatIntervalMs(p0, p1)
         }
     }
@@ -161,15 +160,6 @@ class FlutterHuajiPushPlugin: FlutterPlugin, MethodCallHandler {
         XGPushConfig.enableDebug(if (!isPluginBindingValid()) registrar.context() else mPluginBinding.applicationContext, debug)
     }
 
-     /**
-     * 组件功能是否自动初始化，默认开启
-     */
-    private fun setAutoInit(call: MethodCall, result: MethodChannel.Result) {
-        val map = call.arguments<HashMap<String, Any>>()
-        val autoInit = map[Extras.AUTOINIT] as Boolean
-        Log.i(TAG, "调用信鸽SDK-->setAutoInit()----->isAutoInit=${autoInit}")
-        XGPushConfig.setAutoInit(autoInit)
-    }
 
     /**
      * 设置心跳时间间隔

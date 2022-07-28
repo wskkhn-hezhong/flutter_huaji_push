@@ -153,14 +153,6 @@ class FlutterHuajiPush {
         'setEnableDebug', <String, dynamic>{'enableDebug': enableDebug});
   }
 
-  void setAutoInit(bool autoInit) {
-    if (Platform.isIOS) {
-    } else {
-       _channel.invokeMethod(
-        'setAutoInit', <String, dynamic>{'autoInit': autoInit});
-    }
-  }
-
 /* ============账号接口V1.0.4新增============ */
 
   /// 设置账号
