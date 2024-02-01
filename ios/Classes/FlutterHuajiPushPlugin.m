@@ -6,6 +6,27 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+
+typedef NS_ENUM(NSUInteger, XGPushTokenAccountType) {
+    XGPushTokenAccountTypeUNKNOWN = (0),         // 未知类型，单账号绑定默认使用
+    XGPushTokenAccountTypeCUSTOM = (1),          // 自定义
+    XGPushTokenAccountTypeIDFA = (1001),         // 广告唯一标识 IDFA
+    XGPushTokenAccountTypePHONE_NUMBER = (1002), // 手机号码
+    XGPushTokenAccountTypeWX_OPEN_ID = (1003),   // 微信 OPENID
+    XGPushTokenAccountTypeQQ_OPEN_ID = (1004),   // QQ OPENID
+    XGPushTokenAccountTypeEMAIL = (1005),        // 邮箱
+    XGPushTokenAccountTypeSINA_WEIBO = (1006),   // 新浪微博
+    XGPushTokenAccountTypeALIPAY = (1007),       // 支付宝
+    XGPushTokenAccountTypeTAOBAO = (1008),       // 淘宝
+    XGPushTokenAccountTypeDOUBAN = (1009),       // 豆瓣
+    XGPushTokenAccountTypeFACEBOOK = (1010),     // FACEBOOK
+    XGPushTokenAccountTypeTWITTER = (1011),      // TWITTER
+    XGPushTokenAccountTypeGOOGLE = (1012),       // GOOGLE
+    XGPushTokenAccountTypeBAIDU = (1013),        // 百度
+    XGPushTokenAccountTypeJINGDONG = (1014),     // 京东
+    XGPushTokenAccountTypeLINKEDIN = (1015)      // LINKEDIN
+};
+
 @interface  FlutterHuajiPushPlugin()<XGPushDelegate, XGPushTokenManagerDelegate>
 
 @end
@@ -62,8 +83,43 @@
   }
 }
 
+
 - (NSUInteger)getAccountType:(NSString *)typeStr {
-    return 0;
+    if ([typeStr isEqualToString:@"UNKNOWN"] || [typeStr isEqualToString:@"IMEI"]) {
+        return XGPushTokenAccountTypeUNKNOWN;
+    } else if ([typeStr isEqualToString:@"CUSTOM"]) {
+        return XGPushTokenAccountTypeCUSTOM;
+    } else if ([typeStr isEqualToString:@"IDFA"]) {
+        return XGPushTokenAccountTypeIDFA;
+    } else if ([typeStr isEqualToString:@"PHONE_NUMBER"]) {
+        return XGPushTokenAccountTypePHONE_NUMBER;
+    } else if ([typeStr isEqualToString:@"WX_OPEN_ID"]) {
+        return XGPushTokenAccountTypeWX_OPEN_ID;
+    } else if ([typeStr isEqualToString:@"QQ_OPEN_ID"]) {
+        return XGPushTokenAccountTypeQQ_OPEN_ID;
+    } else if ([typeStr isEqualToString:@"EMAIL"]) {
+        return XGPushTokenAccountTypeEMAIL;
+    } else if ([typeStr isEqualToString:@"SINA_WEIBO"]) {
+        return XGPushTokenAccountTypeSINA_WEIBO;
+    } else if ([typeStr isEqualToString:@"ALIPAY"]) {
+        return XGPushTokenAccountTypeALIPAY;
+    } else if ([typeStr isEqualToString:@"TAOBAO"]) {
+        return XGPushTokenAccountTypeTAOBAO;
+    } else if ([typeStr isEqualToString:@"DOUBAN"]) {
+        return XGPushTokenAccountTypeDOUBAN;
+    } else if ([typeStr isEqualToString:@"FACEBOOK"]) {
+        return XGPushTokenAccountTypeFACEBOOK;
+    } else if ([typeStr isEqualToString:@"TWITTER"]) {
+        return XGPushTokenAccountTypeTWITTER;
+    } else if ([typeStr isEqualToString:@"GOOGLE"]) {
+        return XGPushTokenAccountTypeGOOGLE;
+    } else if ([typeStr isEqualToString:@"BAIDU"]) {
+        return XGPushTokenAccountTypeBAIDU;
+    } else if ([typeStr isEqualToString:@"JINGDONG"]) {
+        return XGPushTokenAccountTypeJINGDONG;
+    } else if ([typeStr isEqualToString:@"LINKEDIN"]) {
+        return XGPushTokenAccountTypeLINKEDIN;
+    } else return XGPushTokenAccountTypeUNKNOWN;
 }
 
 /// 集群域名配置（非广州集群需要在startXg之前调用此函数）

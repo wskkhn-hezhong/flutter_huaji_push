@@ -6,7 +6,7 @@ A new Flutter plugin.
 在工程 pubspec.yaml 中加入 dependencies
 ```
       dependencies:
-        flutter_huaji_push: 1.0.0
+        flutter_huaji_push: 1.1.5
 ```
 
 、## 使用
